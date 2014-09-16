@@ -43,7 +43,7 @@
                     <div class="pull-right"  id="status-task">
                         <div><label>Status da Tarefa</label></div>
                         <div>
-                            <select name="status">
+                            <select name="status" class="status">
                                 <option <?php echo $this->data['status'] == 'CONCLUIDO' ? 'selected' : '';?> value="CONCLUIDO">Concluído</option>
                                 <option <?php echo $this->data['status'] == 'PENDENTE' ? 'selected' : '';?> value="PENDENTE">Pendente</option>
                                 <option <?php echo $this->data['status'] == 'EM ANDAMENTO' ? 'selected' : '';?>value="EM ANDAMENTO">Em Andamento</option>

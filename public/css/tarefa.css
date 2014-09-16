@@ -144,4 +144,8 @@ form label {
         position: relative;
         left: 3%;
     }
+    
+    .status {
+        width: 100px;
+    }
 }

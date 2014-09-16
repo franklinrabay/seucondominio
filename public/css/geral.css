@@ -55,6 +55,14 @@ body {
 }
 
 @media (max-width: 980px) {
+    .desktop {
+        display: none;
+    }
+    
+    #top_menu {
+        background-image: none !important;
+    }
+    
     #buttons {
         float: right !important;
     }
