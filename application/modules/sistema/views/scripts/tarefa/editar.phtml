@@ -1,0 +1,82 @@
+<script type="text/javascript" src="<?php echo $this->baseUrl('js/tarefa.js'); ?>"></script>
+<link href="<?php echo $this->baseUrl('css/tarefa.css'); ?>" media="screen" rel="stylesheet" type="text/css">
+<div class="container-fluid">
+    <a id="new_task" href="<?php echo $this->baseUrl('sistema/tarefa');?>" class="pull-right">
+        <span class="pull-right"><img src="<?php echo $this->baseUrl('img/voltar.png')?>"></span>
+    </a>
+</div>
+<div id="accordion_content">
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#new_task_collapse">
+                Editar Tarefa
+            </a>
+          </h4>
+        </div>
+        <div id="new_task_collapse" class="panel-collapse collapse in">
+          <div class="panel-body">
+              <form method="POST" action="<?php echo $this->baseUrl('sistema/tarefa/editar/id/'.$this->id);?>" class="task new">
+                  <div><label>Nome da Tarefa</label></div>
+                  <div><input id="nome" type="text" class="form-control" name="titulo" value="<?php echo $this->data['titulo'];?>"></div>
+                  
+                    <div id="dates_input"> 
+                      <table id="dates_table">
+                            <tr>
+                                <td><label>Início</label></td>
+                                <td><label>Conclusão</label></td>
+                            </tr>
+                            <tr>
+                                <td width="120"><input class="dates" value="<?php echo Util_Controller_Action_Helper_Formatter::formatarData($this->data['inicio'], 'dd/MM/YYYY');?>" id="inicio" type="text" name="inicio" readonly><span class="glyphicon glyphicon-calendar"><i></i></span></td>
+                                <td width="120"><input class="dates" id="conclusao" value="<?php echo Util_Controller_Action_Helper_Formatter::formatarData($this->data['conclusao'],'dd/MM/yyyy');?>" type="text" name="conclusao" readonly><span class="glyphicon glyphicon-calendar"><i></i></span></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="pull-left" id="cost-task">
+                        <div><label>Custo Estimado</label></div>
+                        <div class="input-group" id="custo">
+                            <span class="input-group-addon">R$</span>
+                            <input id="valor" type="text" name="valor" value="<?php echo $this->data['valor'];?>" class="form-control">
+                        </div>
+                    </div>
+                    <div class="pull-right"  id="status-task">
+                        <div><label>Status da Tarefa</label></div>
+                        <div>
+                            <select name="status">
+                                <option <?php echo $this->data['status'] == 'CONCLUIDO' ? 'selected' : '';?> value="CONCLUIDO">Concluído</option>
+                                <option <?php echo $this->data['status'] == 'PENDENTE' ? 'selected' : '';?> value="PENDENTE">Pendente</option>
+                                <option <?php echo $this->data['status'] == 'EM ANDAMENTO' ? 'selected' : '';?>value="EM ANDAMENTO">Em Andamento</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                  <div class="pull-right" id="buttons">
+                      <a href="<?php echo $this->baseUrl('sistema/tarefa');?>">
+                          <img src="<?php echo $this->baseUrl('img/voltar.png');?>" />
+                      </a>
+                      <a href="#" id="delete-task">
+                          <img src="<?php echo $this->baseUrl('img/excluir.png');?>" />
+                      </a>
+                      <a href="#" id="save">
+                        <img src="<?php echo $this->baseUrl('img/salvar.png');?>" />
+                      </a>
+                  </div>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div id="confirm-delete" class="alert alert-danger" role="alert">
+    <img src="<?php echo $this->baseUrl("img/alerta.png");?>"/>
+    Deseja Excluir? 
+    <p class="pull-right">
+        <a href="<?php echo $this->baseUrl('sistema/tarefa/excluir/id/'.$this->data['id']);?>">
+            <img src="<?php echo $this->baseUrl("img/sim.png");?>"/>
+        </a>
+        <a href="<?php echo $this->baseUrl('sistema/tarefa');?>">
+            <img src="<?php echo $this->baseUrl("img/nao.png");?>"/>
+        </a>
+    </p>
+</div>

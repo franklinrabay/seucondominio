@@ -1,0 +1,161 @@
+<script type="text/javascript" src="<?php echo $this->baseUrl('js/tarefa.js'); ?>"></script>
+<link href="<?php echo $this->baseUrl('css/tarefa.css'); ?>" media="screen" rel="stylesheet" type="text/css">
+<div class="container-fluid">
+    <a id="new_task" href="#" class="pull-right">
+        <span class="pull-right"><img src="<?php echo $this->baseUrl('img/cadastrartarefa.png')?>"></span>
+    </a>
+</div>
+<div id="accordion_content">
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-info" id="panel_new_task">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#new_task_collapse">
+                Nova Tarefa
+            </a>
+          </h4>
+        </div>
+        <div id="new_task_collapse" class="panel-collapse collapse in">
+          <div class="panel-body">
+              <form method="POST" action="<?php echo $this->baseUrl('sistema/tarefa/cadastrar');?>" class="task new">
+                  <div><label>Nome da Tarefa</label></div>
+                  <div><input id="nome" type="text" class="form-control" name="titulo"></div>
+                  
+                    <div id="dates_input">
+                      <table id="dates_table">
+                            <tr>
+                                <td><label>Início</label></td>
+                                <td><label>Conclusão</label></td>
+                            </tr>
+                            <tr>
+                                <td width="120"><input class="dates" id="inicio" type="text" name="inicio" readonly><span class="glyphicon glyphicon-calendar"><i></i></span></td>
+                                <td width="120"><input class="dates" id="conclusao" type="text" name="conclusao" readonly><span class="glyphicon glyphicon-calendar"><i></i></span></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="pull-left" id="cost-task">
+                        <div><label>Custo Estimado</label></div>
+                        <div class="input-group" id="custo">
+                            <span class="input-group-addon">R$</span>
+                            <input id="valor" type="text" name="valor" class="form-control">
+                        </div>
+                    </div>
+                    <div class="pull-right" id="status-task">
+                        <div><label>Status da Tarefa</label></div>
+                        <div>
+                            <select name="status">
+                                <option value="CONCLUIDO">Concluído</option>
+                                <option value="PENDENTE">Pendente</option>
+                                <option value="EM ANDAMENTO">Em Andamento</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                  <div class="pull-right" id="buttons">
+                      <a href="<?php echo $this->baseUrl('sistema/tarefa');?>">
+                          <img src="<?php echo $this->baseUrl('img/voltar.png');?>" />
+                      </a>
+                      <a href="#" id="save">
+                        <img src="<?php echo $this->baseUrl('img/salvar.png');?>" />
+                      </a>
+                  </div>
+              </form>
+          </div>
+        </div>
+      </div>
+      <?php foreach($this->data as $data): ?>  
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#<?php echo $data['titulo']."-collapse"?>">
+                   <?php echo $data['titulo']?>
+                </a>
+                <a href='<?php echo $this->baseUrl("sistema/tarefa/editar/id/".$data['id']);?>'>  
+                    <span class="glyphicon glyphicon-pencil pull-right"></span>
+                </a>  
+              </h4>
+            </div>
+            <div id="<?php echo $data['titulo']."-collapse"?>" class="panel-collapse collapse">
+              <div class="panel-body">
+                  <div class="task-view">
+                      <table class="task-table">
+                            <tr class="task-table-head">
+                                <td>Início</td>
+                                <td>Conclusão</td>
+                            </tr>
+                            <tr class="task-table-tr">
+                                <td class="date" width="120"><?php echo $data['inicio'];?></td>
+                                <td class="date" width="120"><?php echo $data['conclusao'];?></td>
+                            </tr>
+                        </table>
+                        <div class="div-task">
+                            <table class="view-task">
+                                <tr>
+                                    <td class="view-task-head" width="160"><h5><strong>Custo Estimado</strong></h5></td>
+                                    <td class="view-task-head" width="160"><h5><strong>Status da Tarefa</strong></h5></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="cost"><strong>R$</strong></span><?php echo $data['valor'];?></td>
+                                    <td><?php echo $data['status'];?></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="comments">
+                            <legend>
+                                <h4>
+                                    <span class="glyphicon glyphicon-comment hidden-lg"></span>
+                                    Comentários
+                                </h4>
+                            </legend>
+                            <div class="comment-render">
+                                <?php if(isset($data['comentarios'])): ?>
+                                    <?php foreach ($data['comentarios'] as $comentarios): ?>
+                                    <div class="comment" data-id="<?php echo $comentarios['id']; ?>"> 
+                                        <table class="comment-table">
+                                            <tr>
+                                                <td rowspan="2" class="comment-table-photo"><img class="comment-photo" src="<?php echo $this->baseUrl('img/pessoa.png'); ?>"></td>
+                                                <td class="comment-header">
+                                                    <h4>
+                                                        <span class="pull-right">
+                                                            <a href="#">
+                                                                <img src="<?php echo $this->baseUrl('img/lixo.png')?>">
+                                                            </a>
+                                                        </span>
+                                                        <span class="text-primary pull-left">Fulano de Tal</span>
+                                                    </h4>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="comment-content">
+                                                    <p class="text">
+                                                        <?php echo $comentarios['texto'] ?>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <p>Enviado no dia 
+                                            <?php echo Util_Controller_Action_Helper_Formatter::formatarData($comentarios['data'], 'dd/MM/yyyy'); ?>
+                                        </p>
+                                        <hr>
+                                    </div>
+                                    <?php endforeach;?>
+                                <?php endif;?>
+                            </div>
+                            <div id="comment_text">
+                                <form>
+                                    <input type="hidden" name="tarefa_id" value="<?php echo $data['id']; ?>">
+                                    <textarea resize="none" class="form-control message" name="texto" ></textarea>
+                                    <a href="#" class="message_send pull-right">
+                                        <img src="<?php echo $this->baseUrl('img/enviar-comentario.png');?>"/>
+                                    </a>
+                                </form>
+                                
+                            </div>
+                        </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+      <?php endforeach; ?>  
+    </div>
+</div>

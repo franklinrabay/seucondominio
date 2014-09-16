@@ -1,0 +1,26 @@
+<div class="comment"> 
+    <table class="comment-table">
+        <tr>
+            <td rowspan="2" class="comment-table-photo"><img class="comment-photo" src="<?php echo $this->baseUrl('img/pessoa.png'); ?>"></td>
+            <td class="comment-header">
+                <h4>
+                    <span class="pull-right">
+                        <img src="<?php echo $this->baseUrl('img/lixo.png')?>">
+                    </span>
+                    <span class="text-primary pull-left">Fulano de Tal</span>
+                </h4>
+            </td>
+        </tr>
+        <tr>
+            <td class="comment-content">
+                <p class="text">
+                    <?php echo $this->texto; ?>
+                </p>
+            </td>
+        </tr>
+    </table>
+    <p>Enviado no dia 
+        <?php echo Util_Controller_Action_Helper_Formatter::formatarData($this->data, 'dd/MM/yyyy'); ?>
+    </p>
+    <hr>
+</div>

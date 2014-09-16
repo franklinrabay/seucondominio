@@ -1,0 +1,147 @@
+hr {
+    margin-top: 0;
+}
+#accordion_content {
+    padding-top: 10px;
+}
+
+#panel_new_task {
+    display: none;
+}
+
+form.task.new #nome {
+    width: 100%;
+}
+
+form label {
+    font-family: "Arial";
+    color: #149bdf;
+}
+
+#dates_table {
+    position: relative;
+    left: 40%;
+}
+
+.dates {
+    width: 80px;
+    text-align: center;
+}
+
+#dates_input {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+#dates_table td, .task-table td {
+    border: 1px #cccccc solid;
+    text-align: center;
+}
+
+.task-table td {
+    color: #149bdf;
+}
+
+#dates_table tr, .task-table tr {
+    background: #f4f4f4; /* Old browsers */
+    background: -moz-linear-gradient(top, #f4f4f4 0%, #ffffff 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f4f4f4), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #f4f4f4 0%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #f4f4f4 0%,#ffffff 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #f4f4f4 0%,#ffffff 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #f4f4f4 0%,#ffffff 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f4f4', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+}
+
+.task-table {
+    margin-left: 8px;
+}
+
+.task-table-head {
+    height: 30px;
+    text-align: center;
+}
+.task-table-tr {
+    text-align: center;
+    height: 50px;
+}
+
+
+.date {
+    color: grey !important;
+    font-weight: 800;
+}
+
+#custo {
+    width: 120px;
+    z-index: 10 !important; 
+}
+
+#buttons {
+    padding-top: 40px;
+}
+
+.cost {
+    font-family: "Arial";
+    color: #149bdf;   
+}
+
+.div-task {
+    padding-top: 20px ;
+}
+
+.view-task-head {
+    font-family: "Arial";
+    color: #149bdf;   
+}
+
+.view-task td {
+    text-align: center;
+}
+
+.comments {
+    padding-top: 20px;
+}
+
+.comment-header {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 100%;
+    height: 20px;
+}
+
+.comment-content {
+    padding: 10px;
+}
+
+.comment-photo {
+    border-radius: 10px;
+    border: 2px black solid;
+    width: 70px;
+    height: 70px;
+}
+
+.comment-table-photo {
+    vertical-align: top
+}
+
+.message {
+    background-color: #dbf4ee
+}
+
+.message_send {
+    padding-top: 10px;
+}
+
+#confirm-delete {
+    display: none;
+}
+
+@media (max-width: 980px) {
+    #dates_table {
+        position: relative;
+        left: 3%;
+    }
+}

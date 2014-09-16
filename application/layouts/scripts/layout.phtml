@@ -1,0 +1,86 @@
+<?php echo $this->doctype(); ?>
+<html lang="en">
+<head>
+    <?php
+    echo $this->headMeta()->setCharset('UTF-8')
+        ->appendHttpEquiv('Content-Language', 'pt-BR')
+        ->appendName('description', 'Seu Condominio')
+        ->appendName('author', 'Denis Alustau')
+        ->appendName('keywords', 'framework, PHP, productivity')
+        ->appendName('viewport', 'width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no');
+
+    $this->headTitle()->setSeparator(' :: ')->prepend('Seu Condominio');
+    echo $this->headTitle();
+    
+    echo $this->headScript()
+        ->prependFile($this->baseUrl('js/mascara.js'))
+        ->prependFile($this->baseUrl('js/scripts.js'))
+        ->prependFile($this->baseUrl('lib/bootstrap-3.1.1/js/bootstrap.min.js'))
+        ->prependFile($this->baseUrl('lib/jquery/jqueryUI/jquery-ui.js'))
+        ->prependFile($this->baseUrl('lib/jquery/jquery-1.11.0.js'));
+    echo $this->headLink()
+        ->prependStylesheet($this->baseUrl('css/geral.css'))
+        ->prependStylesheet($this->baseUrl('lib/jquery/jqueryUI/jquery-ui.css'))
+        ->prependStylesheet($this->baseUrl('lib/bootstrap-3.1.1/css/bootstrap.min.css'));
+    
+    ?>
+</head>
+<body data-twttr-rendered="true">
+
+<nav id="top_menu" class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="pull-left navbar-toggle" data-toggle="collapse" data-target="#menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <img id="logo" src="<?php echo $this->baseUrl('img/seucondominio.png');?>">
+            <div class="pull-right" id="user">
+                <span>Rogério</span> 
+                <button class="btn btn-danger" id="logout">Sair</button>
+            </div>
+        </div>
+        
+        <div class="collapse navbar-collapse in" id="menu">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="text-primary">Tarefa</span><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="<?php echo $this->baseUrl('sistema/tarefa'); ?>">
+                                Cadastrar
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            <div id="header-imoveis" class="pull-right" >
+                <select id="imoveis">
+                    <option>Bosque do Cerrado</option>
+                    <option>Kadosh</option>
+                    <option>Rio-Mar</option>
+                </select>
+            </div>
+            <a class="navbar-brand pull-right" href="<?php echo $this->baseUrl('sistema/auth/logout'); ?>">
+                <p class="text-primary">Logout</p>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <?php echo $this->layout()->content; ?>
+    <hr />
+    <footer>
+        <p>&copy; Franklin Rabay - 2014</p>
+    </footer>
+
+</div><!--/.fluid-container-->
+
+</body>
+</html>
+
+<script type="text/javascript">
+    baseUrl = '<?php echo $this->baseUrl();?>';
+</script>
