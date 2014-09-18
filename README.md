@@ -1,1 +1,1 @@
-Este é um controle de estoque
+Seu condominio
