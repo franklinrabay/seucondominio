@@ -3,7 +3,7 @@
 class Util_Controller_Action_Helper_Formatter  extends 
     Zend_Controller_Action_Helper_Abstract
 {
-    public function formatarData($data, $format = 'yyyy-MM-dd') 
+    public static function formatarData($data, $format = 'yyyy-MM-dd') 
     {
         $date = new Zend_Date($data, null, 'pt_BR');
         return $date->toString($format);
